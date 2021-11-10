@@ -17,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ISchoolRepository, SchoolRepository>();
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using School.Core.Repositories;
 
 namespace School.Api.Controllers
 {
@@ -6,6 +7,13 @@ namespace School.Api.Controllers
     [Route("[controller]")]
     public class SchoolController : ControllerBase
     {
+        private readonly ISchoolRepository schoolRepository;
+
+        public SchoolController(ISchoolRepository schoolRepository)
+        {
+            this.schoolRepository = schoolRepository;
+        }
+
         [HttpGet]
         public ActionResult<string> Get()
         {
