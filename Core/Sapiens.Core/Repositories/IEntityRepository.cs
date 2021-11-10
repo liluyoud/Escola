@@ -9,11 +9,11 @@ namespace Sapiens.Core.Repositories
     public interface IEntityRepository<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(long id);
+        Task<T?> GetByIdAsync(long id);
         Task AddAsync(T t);
         void Update(T t);
         Task DeleteAsync(long id);
         Task<int> SaveAsync();
-        bool Exists(long id);
+        Task<bool> Exists(long id);
     }
 }

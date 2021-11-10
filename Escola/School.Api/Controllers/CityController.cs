@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using School.Core.Entities;
+using School.Core.Repositories;
 
 namespace School.Api.Controllers
 {
@@ -6,10 +8,18 @@ namespace School.Api.Controllers
     [Route("[controller]")]
     public class CityController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<string> Get()
+        private readonly ICityRepository cityRepository;
+
+        public CityController(ICityRepository cityRepository)
         {
-            return Ok("City");
+            this.cityRepository = cityRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<City>>> GetAllAsync()
+        {
+            var cities = await cityRepository.GetAllAsync();
+            return Ok(cities);
         }
 
     }

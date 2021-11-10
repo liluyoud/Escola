@@ -2,7 +2,7 @@
 
 namespace Sapiens.Core.Entities
 {
-    public class AuditBase : EntityBase
+    public abstract class AuditBase : EntityBase
     {
         public DateTime? CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }

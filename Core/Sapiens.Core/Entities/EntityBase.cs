@@ -2,7 +2,7 @@
 
 namespace Sapiens.Core.Entities
 {
-    public class EntityBase
+    public abstract class EntityBase
     {
         [Key]
         public long Id { get; set; }
