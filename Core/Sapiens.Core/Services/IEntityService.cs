@@ -11,7 +11,7 @@ namespace Sapiens.Core.Services
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(long id);
         Task AddAsync(T t);
-        void Update(T t);
+        Task Update(T t);
         Task DeleteAsync(long id);
     }
 }

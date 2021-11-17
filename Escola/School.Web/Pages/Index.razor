@@ -1,0 +1,39 @@
+﻿@page "/"
+@inject ICityService city
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<button @onclick="Adicionar">Adicionar Cidade</button>
+
+<table>
+    <tr>
+        <td>Cidade</td>
+    </tr>
+    @foreach(var city in cities)
+    {
+        <tr>
+        <td>@city.Name</td>
+    </tr>
+    }
+</table>
+
+@code {
+    private IEnumerable<School.Core.Entities.City>? cities = new List<School.Core.Entities.City>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await city.GetAllAsync();
+    }
+
+    private async void Adicionar()
+    {
+        var mycity = new School.Core.Entities.City("São Paulo", "SP");
+        await city.AddAsync(mycity);
+    }
+}
